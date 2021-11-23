@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
+import { IoSearchOutline } from 'react-icons/io5';
 
 import parseCookies from '../../utils/parseCookies';
 import userMockedData from '../../datas/userMockedData';
-import { IoSearchOutline } from 'react-icons/io5';
+import Chat from '../../components/Chats/Chat';
 
 import classes from '../../styles/chats.module.scss';
 
@@ -36,19 +37,7 @@ const ChatsPage = ({ username }) => {
         </div>
       </div>
       <div className={classes.peoples}>
-        {userMockedData.map(chat => {
-          return (<div className={classes.people} key={chat.id} onClick={() => handleClick(chat.id)}>
-            <img src={`/profile-pictures/${chat.img}`} alt='chat-image' />
-            <div className={classes.content}>
-              <p className={classes.chatname}>
-                {chat.name}
-              </p>
-              <p className={classes.lastmessage}>
-                {chat.messages[chat.messages.length - 1].message}
-              </p>
-            </div>
-          </div>
-        )})}
+        {userMockedData.map(chat => <Chat data={chat} handleClick={handleClick} />)}
       </div>
     </div>
   )
