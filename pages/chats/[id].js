@@ -10,9 +10,9 @@ import classes from '../../styles/chat.module.scss';
 const ChatPage = () => {
   
   const router = useRouter();
-  const msgRef = useRef();
+  const msgRef = useRef(null);
   const userId = router.query.id;
-  const data = userMockedData[userId - 1];
+
 
   const handleClose = () => {
     router.push('/chats');
@@ -26,7 +26,7 @@ const ChatPage = () => {
             <img src={`/profile-pictures/${data.img}`} alt={data.name} />
             <div className={classes.userinfoname}>
               <p>
-                {data.name}
+                
               </p>
               <p className={classes.paddingtop}>
                 <FaAngleRight />
