@@ -7,18 +7,12 @@ import userMockedData from "../../datas/userMockedData";
 
 import classes from '../../styles/chat.module.scss';
 
-const ChatPage = () => {
+const ChatPage = ({ allData }) => {
   
   const router = useRouter();
   const msgRef = useRef();
   const userId = router.query.id;
-  const data = null;
-
-  useEffect(() => {
-    if (userMockedData) {
-      data = userMockedData[userId - 1];
-    }
-  }, [userMockedData])
+  const data = allData[userId - 1];
 
   const handleClose = () => {
     router.push('/chats');
@@ -31,9 +25,7 @@ const ChatPage = () => {
           <div className={classes.topleft}>
             <img src={`/profile-pictures/${data.img}`} alt={data.name} />
             <div className={classes.userinfoname}>
-              <p>
-                {data.name}
-              </p>
+              <p>{data.name}</p>
               <p className={classes.paddingtop}>
                 <FaAngleRight />
               </p>
@@ -71,6 +63,14 @@ const ChatPage = () => {
       </div>
     </Fragment>
   )
+}
+
+ChatPage.getInitialProps = ({req}) => {
+  const allData = userMockedData;
+
+  return {
+    allData
+  }
 }
 
 export default ChatPage

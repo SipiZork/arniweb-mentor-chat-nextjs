@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
 
+import parseCookies from '../../utils/parseCookies';
 import userMockedData from '../../datas/userMockedData';
 import { IoSearchOutline } from 'react-icons/io5';
 
 import classes from '../../styles/chats.module.scss';
 
-const ChatsPage = () => {
-  const username = Cookies.get('username');
-  console.log(username);
+const ChatsPage = ({ username }) => {
+  
   const router = useRouter();
 
   const handleClick = (id) => {
@@ -32,7 +32,7 @@ const ChatsPage = () => {
           <p>New chat</p>
         </div>
         <div className={classes.searchicon}>
-          <IoSearchOutline />
+          <p><IoSearchOutline /></p>
         </div>
       </div>
       <div className={classes.peoples}>
@@ -40,18 +40,26 @@ const ChatsPage = () => {
           return (<div className={classes.people} key={chat.id} onClick={() => handleClick(chat.id)}>
             <img src={`/profile-pictures/${chat.img}`} alt='chat-image' />
             <div className={classes.content}>
-              <div className={classes.chatname}>
+              <p className={classes.chatname}>
                 {chat.name}
-              </div>
-              <div className={classes.lastmessage}>
+              </p>
+              <p className={classes.lastmessage}>
                 {chat.messages[chat.messages.length - 1].message}
-              </div>
+              </p>
             </div>
           </div>
         )})}
       </div>
     </div>
   )
+}
+
+ChatsPage.getInitialProps = ({ req }) => {
+  const cookies = parseCookies(req);
+
+  return {
+    username: cookies.username
+  }
 }
 
 
