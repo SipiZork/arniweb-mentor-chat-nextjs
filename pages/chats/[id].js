@@ -1,4 +1,4 @@
-import { Fragment, useRef } from 'react';
+import { Fragment, useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { FaCamera, FaMicrophone, FaAngleRight, FaTimes } from 'react-icons/fa';
 
@@ -10,9 +10,15 @@ import classes from '../../styles/chat.module.scss';
 const ChatPage = () => {
   
   const router = useRouter();
-  const msgRef = useRef(null);
+  const msgRef = useRef();
   const userId = router.query.id;
+  const data = null;
 
+  useEffect(() => {
+    if (userMockedData) {
+      data = userMockedData[userId - 1];
+    }
+  }, [userMockedData])
 
   const handleClose = () => {
     router.push('/chats');
@@ -26,7 +32,7 @@ const ChatPage = () => {
             <img src={`/profile-pictures/${data.img}`} alt={data.name} />
             <div className={classes.userinfoname}>
               <p>
-                
+                {data.name}
               </p>
               <p className={classes.paddingtop}>
                 <FaAngleRight />
