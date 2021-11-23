@@ -7,6 +7,10 @@
   flex-direction: column;
   justify-content: center;
   gap: 0rem;
+  max-width: 40rem;
+  min-width: 300px;
+  margin: 0 auto;
+  position: relative;
 
   p {
     font-size: 4rem;
@@ -28,7 +32,6 @@
 }
 
 .buttons {
-  position: fixed;
+  position: absolute;
   bottom: 2rem;
-  left: 2rem;
 }

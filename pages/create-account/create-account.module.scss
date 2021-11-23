@@ -6,6 +6,10 @@
   flex-direction: column;
   gap: 2rem;
   padding: 2rem;
+  max-width: 40rem;
+  min-width: 300px;
+  margin: 0 auto;
+  position: relative;
 
   h2 {
     font-size: 2.5rem;
@@ -19,7 +23,6 @@
 }
 
 .buttons {
-  position: fixed;
+  position: absolute;
   bottom: 2rem;
-  left: 2rem;
 }

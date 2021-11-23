@@ -53,7 +53,7 @@ const ChatPage = ({ allData }) => {
           <div className={classes.actions}>
             <p className={classes.actionicon}>🤭</p>
             <p className={classes.actionicon}>😓</p>
-            <p className={classes.actionicon}>😋</p>
+            <p className={classes.actionicon, classes.moreactionicon}>😋</p>
             <p className={classes.actionicon, classes.moreactionicon}>😷</p>
             <p>...</p>
             <p>GIF</p>
