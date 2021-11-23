@@ -37,7 +37,7 @@ const ChatsPage = ({ username }) => {
         </div>
       </div>
       <div className={classes.peoples}>
-        {userMockedData.map(chat => <Chat data={chat} handleClick={handleClick} />)}
+        {userMockedData.map(chat => <Chat data={chat} key={chat.id} handleClick={handleClick} />)}
       </div>
     </div>
   )
