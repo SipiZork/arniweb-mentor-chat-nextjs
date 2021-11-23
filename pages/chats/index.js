@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 import userMockedData from '../../datas/userMockedData';
 import { IoSearchOutline } from 'react-icons/io5';
 
-import classes from './chats.module.scss';
+import classes from '../../styles/chats.module.scss';
 
 const ChatsPage = () => {
   const username = Cookies.get('username');

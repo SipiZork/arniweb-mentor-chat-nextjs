@@ -5,7 +5,7 @@ import { FaCamera, FaMicrophone, FaAngleRight, FaTimes } from 'react-icons/fa';
 import Message from '../../components/Messages/Message';
 import userMockedData from "../../datas/userMockedData";
 
-import classes from './chat.module.scss';
+import classes from '../../styles/chat.module.scss';
 
 const ChatPage = () => {
   
