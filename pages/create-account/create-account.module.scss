@@ -1,0 +1,25 @@
+.createAccount {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  input {
+    border: none;
+    font-size: 2rem;
+    outline: none;
+  }
+}
+
+.buttons {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+}

@@ -1,0 +1,16 @@
+.btn {
+  padding: 1rem;
+  font-weight: bold;
+  border-radius: 30px;
+  border: none;
+  background: black;
+  color: white;
+  font-size: .9rem;
+  letter-spacing: .05rem;
+  cursor: pointer;
+  min-width: 5rem;
+
+  &:disabled {
+    background: rgb(131, 131, 131);
+  }
+}
