@@ -20,17 +20,13 @@ const ChatsPage = ({ username }) => {
     router.push(`chats/${id}`);
   }
 
-  const goToSearch = (id) => {
-    router.push(`chats/search`);
-  }
-
   const toggleSearch = () => {
     setShowSearch(!showSearch);
   }
 
   return (
     <Fragment>
-      <Search toggleSearch={toggleSearch} showSearch={showSearch} />
+      <Search toggleSearch={toggleSearch} showSearch={showSearch} handleClick={handleClick} />
       <div className={classes.chats}>
         <div className={classes.top}>
           <p className={classes.name}>Hi, {username}</p>
