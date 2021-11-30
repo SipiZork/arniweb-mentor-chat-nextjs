@@ -12,7 +12,7 @@ const ChatPage = ({ allData }) => {
   const router = useRouter();
   const msgRef = useRef();
   const userId = router.query.id;
-  const data = allData[userId - 1];
+  const data = allData.find(people => people.id.toString() === userId);
 
   const handleClose = () => {
     router.push('/chats');

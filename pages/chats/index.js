@@ -16,6 +16,10 @@ const ChatsPage = ({ username }) => {
     router.push(`chats/${id}`);
   }
 
+  const goToSearch = (id) => {
+    router.push(`chats/search`);
+  }
+
   return (
     <div className={classes.chats}>
       <div className={classes.top}>
@@ -27,7 +31,7 @@ const ChatsPage = ({ username }) => {
         </div>
       </div>
       <h1>Start a new chat</h1>
-      <div className={classes.newchat}>
+      <div className={classes.newchat} onClick={goToSearch}>
         <div className={classes.newchatleft}>
           <div className={classes.newchatimage}></div>
           <p>New chat</p>
