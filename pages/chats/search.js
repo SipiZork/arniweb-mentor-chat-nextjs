@@ -7,7 +7,7 @@ import { FaTimes } from 'react-icons/fa';
 import classes from '../../styles/search.module.scss';
 import userMockedData from '../../datas/userMockedData';
 
-const Search = () => {
+const SearchPage = () => {
 
   const data = userMockedData;
   const router = useRouter();
@@ -58,4 +58,4 @@ const Search = () => {
   )
 }
 
-export default Search;
+export default SearchPage;
