@@ -24,9 +24,13 @@ const ChatsPage = ({ username }) => {
     setShowSearch(!showSearch);
   }
 
+  const sortIt = (array) => {
+    return array.sort((a, b) => a.name.toUpperCase() < b.name.toLocaleUpperCase() ? -1 : 1);
+  }
+
   return (
     <Fragment>
-      <Search toggleSearch={toggleSearch} showSearch={showSearch} handleClick={handleClick} />
+      <Search toggleSearch={toggleSearch} showSearch={showSearch} handleClick={handleClick} sortIt={sortIt} />
       <div className={classes.chats}>
         <div className={classes.top}>
           <p className={classes.name}>Hi, {username}</p>
@@ -47,7 +51,7 @@ const ChatsPage = ({ username }) => {
           </div>
         </div>
         <div className={classes.peoples}>
-          {userMockedData.map(chat => <Chat data={chat} key={chat.id} handleClick={handleClick} />)}
+          {sortIt(userMockedData).map(chat => <Chat data={chat} key={chat.id} handleClick={handleClick} />)}
         </div>
       </div>
     </Fragment>

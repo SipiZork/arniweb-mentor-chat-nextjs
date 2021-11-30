@@ -6,13 +6,10 @@ import userMockedData from "../../datas/userMockedData";
 
 import classes from './search.module.scss';
 
-const Search = ({ toggleSearch, showSearch, handleClick }) => {
+const Search = ({ toggleSearch, showSearch, handleClick, sortIt }) => {
   const data = userMockedData;
   const [searchField, setSearchField] = useState('');
-  
-  const sortIt = (array) => {
-    return array.sort((a, b) => a.name.toUpperCase() < b.name.toLocaleUpperCase() ? -1 : 1);
-  }
+
   const [people, setPeople] = useState(sortIt(userMockedData));
 
   const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -20,6 +17,10 @@ const Search = ({ toggleSearch, showSearch, handleClick }) => {
   const handleChange = (e) => {
     setSearchField(e.target.value);
   }
+
+  useEffect(() => {
+    setPeople(sortIt(data.filter(person => person.name.toUpperCase().includes(searchField.toUpperCase()))));
+  }, []);
 
   useEffect(() => {
     setPeople(sortIt(data.filter(person => person.name.toUpperCase().includes(searchField.toUpperCase()))));
