@@ -1,6 +1,9 @@
 import cookie from 'cookie';
 
-const parseCookies = (req) => {
+export const parseCookies = (req) => {
   return cookie.parse(req ? req.headers.cookie || "" : document.cookie);
 }
-export default parseCookies;
+
+export const setUsers = (req) => {
+
+}

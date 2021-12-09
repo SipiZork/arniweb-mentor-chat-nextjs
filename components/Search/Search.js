@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { FaTimes } from 'react-icons/fa';
 
 import Person from '../Chats/Person';
@@ -6,8 +7,8 @@ import userMockedData from "../../datas/userMockedData";
 
 import classes from './search.module.scss';
 
-const Search = ({ toggleSearch, showSearch, handleClick, sortIt }) => {
-  const data = userMockedData;
+const Search = ({  user, toggleSearch, showSearch, handleClick, sortIt }) => {
+  const data = user.users;
   const [searchField, setSearchField] = useState('');
 
   const [people, setPeople] = useState(sortIt(userMockedData));
@@ -54,4 +55,10 @@ const Search = ({ toggleSearch, showSearch, handleClick, sortIt }) => {
   )
 }
 
-export default Search
+
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+
+export default connect(mapStateToProps)(Search);

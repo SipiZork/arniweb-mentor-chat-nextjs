@@ -12,7 +12,7 @@ const Person = ({ person, handleClick }) => {
   
   return (
     <div className={classes.person} onClick={() => handleClick(person.id)}>
-      <img src={`/profile-pictures/${person.img}`} alt={person.img} />
+      <img src={person.img} alt={person.img} />
       <p>{person.name}</p>
     </div>
   )

@@ -1,5 +1,6 @@
 import { Fragment, useRef, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { connect } from 'react-redux';
 import { FaCamera, FaMicrophone, FaAngleRight, FaTimes } from 'react-icons/fa';
 
 import Message from '../../components/Messages/Message';
@@ -7,12 +8,14 @@ import userMockedData from "../../datas/userMockedData";
 
 import classes from '../../styles/chat.module.scss';
 
-const ChatPage = ({ allData }) => {
+const ChatPage = ({ user, allData }) => {
   
+  const { users } = user;
+
   const router = useRouter();
   const msgRef = useRef();
   const userId = router.query.id;
-  const data = allData.find(people => people.id.toString() === userId);
+  const data = users.find(people => people.id.toString() === userId);
 
   const handleClose = () => {
     router.push('/chats');
@@ -23,7 +26,7 @@ const ChatPage = ({ allData }) => {
       <div className={classes.chat}>
         <div className={classes.userinfo}>
           <div className={classes.topleft}>
-            <img src={`/profile-pictures/${data.img}`} alt={data.name} />
+            <img src={data.img} alt={data.name} />
             <div className={classes.userinfoname}>
               <p>{data.name}</p>
               <p className={classes.paddingtop}>
@@ -73,4 +76,9 @@ ChatPage.getInitialProps = ({req}) => {
   }
 }
 
-export default ChatPage
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+
+export default connect(mapStateToProps)(ChatPage)

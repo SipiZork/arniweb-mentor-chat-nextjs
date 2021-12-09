@@ -63,6 +63,7 @@
 .inputline {
   display: flex;
   gap: .25rem;
+  justify-content: space-between;
   input,
   .inputlineicon {
     height: 3rem;
@@ -80,7 +81,7 @@
   }
 
   .inputlineicon {
-    width: 13%;
+    width: 15%;
     max-width: 4rem;
     display: flex;
     justify-content: center;

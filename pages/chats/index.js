@@ -1,5 +1,6 @@
 import { Fragment, useState } from 'react';
 import { useRouter } from 'next/router';
+import { connect } from 'react-redux';
 import Cookies from 'js-cookie';
 import { IoSearchOutline } from 'react-icons/io5';
 
@@ -10,7 +11,7 @@ import Chat from '../../components/Chats/Chat';
 
 import classes from '../../styles/chats.module.scss';
 
-const ChatsPage = ({ username }) => {
+const ChatsPage = ({ user, username }) => {
   
   const router = useRouter();
 
@@ -51,20 +52,17 @@ const ChatsPage = ({ username }) => {
           </div>
         </div>
         <div className={classes.peoples}>
-          {sortIt(userMockedData).map(chat => <Chat data={chat} key={chat.id} handleClick={handleClick} />)}
+          {sortIt(user.users).map(chat => <Chat data={chat} key={chat.id} handleClick={handleClick} />)}
         </div>
       </div>
     </Fragment>
   )
 }
 
-ChatsPage.getInitialProps = ({ req }) => {
-  const cookies = parseCookies(req);
 
-  return {
-    username: cookies.username
-  }
-}
+const mapStateToProps = state => ({
+  user: state.user
+})
 
 
-export default ChatsPage
+export default connect(mapStateToProps)(ChatsPage)

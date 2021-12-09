@@ -2,7 +2,7 @@ import classes from './chat.module.scss';
 const Chat = ({ data, handleClick }) => {
   return (
     <div className={classes.people} onClick={() => handleClick(data.id)}>
-      <img src={`/profile-pictures/${data.img}`} alt='chat-image' />
+      <img src={data.img} alt='chat-image' />
       <div className={classes.content}>
         <p className={classes.chatname}>
           {data.name}
