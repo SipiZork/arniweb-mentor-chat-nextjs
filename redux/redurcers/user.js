@@ -1,7 +1,8 @@
-import { SET_USERS } from '../types';
+import { SET_USERS, SET_USER } from '../types';
 
 const initialState = {
-  users: ['alma']
+  users: [],
+  username: null
 }
 
 const user = (state = initialState, action) => {
@@ -11,6 +12,11 @@ const user = (state = initialState, action) => {
       return {
         ...state,
         users: payload
+      }
+    case SET_USER:
+      return {
+        ...state,
+        username: payload
       }
     default:
       return {

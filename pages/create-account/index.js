@@ -1,12 +1,13 @@
 import { useRef, useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import { useRouter } from 'next/router';
-import Cookie from 'js-cookie';
+import { setUser } from '../../redux/actions/user';
 
 import Button from '../../components/ui/Button';
 
 import classes from './create-account.module.scss';
 
-const CreateAccountPage = () => {
+const CreateAccountPage = ({ setUser }) => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const router = useRouter();
   const nameRef = useRef();
@@ -21,7 +22,7 @@ const CreateAccountPage = () => {
   }
 
   const handleLogIn = () => {
-    Cookie.set('username', nameRef.current.value);
+    setUser(nameRef.current.value);
     router.push('/chats');
   }
 
@@ -36,4 +37,8 @@ const CreateAccountPage = () => {
   )
 }
 
-export default CreateAccountPage
+const mapDispatchToProps = {
+  setUser
+}
+
+export default connect(null, mapDispatchToProps)(CreateAccountPage);

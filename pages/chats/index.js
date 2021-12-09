@@ -11,7 +11,7 @@ import Chat from '../../components/Chats/Chat';
 
 import classes from '../../styles/chats.module.scss';
 
-const ChatsPage = ({ user, username }) => {
+const ChatsPage = ({ user: {users, username} }) => {
   
   const router = useRouter();
 
@@ -52,7 +52,7 @@ const ChatsPage = ({ user, username }) => {
           </div>
         </div>
         <div className={classes.peoples}>
-          {sortIt(user.users).map(chat => <Chat data={chat} key={chat.id} handleClick={handleClick} />)}
+          {sortIt(users).map(chat => <Chat data={chat} key={chat.id} handleClick={handleClick} />)}
         </div>
       </div>
     </Fragment>
